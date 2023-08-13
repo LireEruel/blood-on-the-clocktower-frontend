@@ -1,18 +1,30 @@
 <template>
   <div id="chatArea">
-    <div class="chat-list-wrap">
-      <div class="chats" v-for="chat in chatList" :key="chat.id">
+    <div class="chat-list">
+      <div class="chats" v-for="(chat, index) in chatList" :key="index">
         {{ chat.senderName }} : {{ chat.text }}
       </div>
     </div>
+    <a-input-group compact>
+      <a-input
+        v-model:value="inputText"
+        @press-enter="onEnteredChat"
+        style="width: calc(100% - 75px)"
+      />
+      <a-button type="primary">Submit</a-button>
+    </a-input-group>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { chatStore } from '@/stores/chat'
+import { userStore } from '@/stores/user'
 import { Chat } from '@/types/chat'
+import { onMounted } from 'vue'
+import { watch } from 'vue'
+import { ref } from 'vue'
 const { chatList, addChat } = chatStore()
-
+const { name } = userStore()
 const dummyData: Chat[] = [
   {
     id: 1,
@@ -145,18 +157,68 @@ const dummyData: Chat[] = [
     id: 94,
     senderName: '원숭이',
     text: '무엇이든 빨리 밝혀내자. 이런 분위기가 너무 무서워.'
+  },
+  { id: 10, senderName: '박쥐', text: '어둠 속에서 누군가 움직이는 것을 느꼈어. 누구냐?' },
+  { id: 11, senderName: '펭귄', text: '조용히 해! 무슨 소리가 들렸어. 아무도 들어오지 않았나?' },
+  { id: 12, senderName: '늑대', text: '이 밤이 끝나기 전에 진실을 밝혀야 해. 다들 조심해.' },
+  { id: 13, senderName: '여우', text: '익숙한 향이 나. 이곳에서 뭔가 일어나고 있다.' },
+  { id: 14, senderName: '엉덩이 탐정', text: '증거를 찾았다! 이걸 봐!' },
+  { id: 15, senderName: '고양이', text: '왜 나를 의심해? 나는 무고한 민간인이야.' },
+  { id: 16, senderName: '토끼', text: '시간이 없어! 빨리 결정해야 해!' },
+  { id: 17, senderName: '곰', text: '잠깐만, 이거 봐. 이 흔적은 뭐지?' },
+  {
+    id: 18,
+    senderName: '독수리',
+    text: '높은 곳에서 모든 것을 봤다. 말하고 싶은 사람이 누구인지 알 것 같아.'
+  },
+  {
+    id: 19,
+    senderName: '사자',
+    text: '힘이 필요하다면 나에게 와. 나는 너희를 도울 수 있을 것이다.'
+  },
+  { id: 20, senderName: '기린', text: '이 상황을 판단하기엔 아직 이른 것 같아. 더 살펴봐야겠다.' },
+  { id: 21, senderName: '코끼리', text: '이 문제를 함께 해결해 나가자. 나는 믿음직한 파트너다.' },
+  {
+    id: 22,
+    senderName: '고릴라',
+    text: '압력에 지지 말고 마음을 공유하자. 우리는 서로를 이해해야 한다.'
+  },
+  { id: 23, senderName: '햄스터', text: '내가 작다고 얕보지 마. 나도 중요한 정보를 가지고 있다!' },
+  {
+    id: 24,
+    senderName: '참새',
+    text: '조금 전에 어떤 이상한 소리가 들렸다. 무슨 일이 일어난 거지?'
+  },
+  {
+    id: 25,
+    senderName: '두더지',
+    text: '땅 속에서 뭔가 이상한 진동을 느꼈다. 무엇인지 알아봐야겠어.'
   }
 ]
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
-
+const inputText = ref('')
 dummyData.reduce((promise, chat) => {
   return promise
-    .then(() => delay(1000))
+    .then(() => delay(0))
     .then(() => {
       addChat(chat)
     })
 }, Promise.resolve())
+
+const onEnteredChat = () => {
+  const newChat: Chat = {
+    id: chatList.length,
+    senderName: name,
+    text: inputText.value
+  }
+  addChat(newChat)
+  inputText.value = ''
+}
+let $chatList: Element
+onMounted(() => {
+  $chatList = document.getElementsByClassName('chat-list')[0]
+})
 </script>
 
 <style lang="scss" scoped>
@@ -167,5 +229,12 @@ dummyData.reduce((promise, chat) => {
   padding: 2%;
   overflow-y: auto;
   width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  .chat-list {
+    overflow-y: auto;
+  }
 }
 </style>

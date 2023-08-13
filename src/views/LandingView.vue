@@ -2,7 +2,14 @@
   <main id="landingPage">
     <div class="input-wrap">
       <a-input v-model:value="inputName" placeholder="Name" />
-      <a-button @click="onClickedPlayBtn" class="play-btn" type="primary"> Play →</a-button>
+      <a-button
+        @click="onClickedPlayBtn"
+        :loading="isWaitingToJoin"
+        class="play-btn"
+        type="primary"
+      >
+        Play →</a-button
+      >
       <label>{{ currentParticipants }} / {{ maxParticipants }}</label>
     </div>
   </main>
@@ -15,9 +22,14 @@ const { name, setName } = userStore()
 const inputName = ref<string>(name)
 const currentParticipants = ref<number>(12)
 const maxParticipants = ref<number>(25)
+const isWaitingToJoin = ref<boolean>(false)
 
-const onClickedPlayBtn = () => {
+const onClickedPlayBtn = async () => {
   setName(inputName.value)
+  isWaitingToJoin.value = true
+  await setTimeout(function () {
+    isWaitingToJoin.value = false
+  }, 3000)
 }
 </script>
 

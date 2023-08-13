@@ -1,8 +1,8 @@
 <template>
   <main id="landingPage">
     <div class="input-wrap">
-      <a-input v-model:value="name" placeholder="Name" />
-      <a-button class="play-btn" type="primary"> Play →</a-button>
+      <a-input v-model:value="inputName" placeholder="Name" />
+      <a-button @click="onClickedPlayBtn" class="play-btn" type="primary"> Play →</a-button>
       <label>{{ currentParticipants }} / {{ maxParticipants }}</label>
     </div>
   </main>
@@ -10,9 +10,15 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-const name = ref<string>('')
+import { userStore } from '@/stores/user'
+const { name, setName } = userStore()
+const inputName = ref<string>(name)
 const currentParticipants = ref<number>(12)
 const maxParticipants = ref<number>(25)
+
+const onClickedPlayBtn = () => {
+  setName(inputName.value)
+}
 </script>
 
 <style lang="scss">

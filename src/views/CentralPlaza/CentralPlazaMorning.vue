@@ -1,12 +1,12 @@
 <template>
   <main id="centralPlazaMorning">
-    <div>중앙 광장</div>
+    <TimerLabel :end-time="endTime.toISOString()" />
   </main>
 </template>
 
 <script lang="ts" setup>
-import { userStore } from '@/stores/user'
-const { name, setName } = userStore()
+import dayjs from 'dayjs'
+const endTime = dayjs().add(10, 'minute')
 </script>
 
 <style lang="scss">
@@ -18,20 +18,5 @@ const { name, setName } = userStore()
   width: 100%;
   height: 100%;
   padding: 5%;
-  .input-wrap {
-    width: 250px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    .play-btn {
-      width: 100%;
-    }
-    label {
-      color: $white;
-    }
-  }
 }
 </style>

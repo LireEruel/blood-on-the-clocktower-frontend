@@ -54,7 +54,7 @@ export default {
   background-color: $white-06;
   box-sizing: content-box;
   width: 10rem;
-  margin: auto;
+  margin: 1% auto;
   text-align: center;
 }
 </style>

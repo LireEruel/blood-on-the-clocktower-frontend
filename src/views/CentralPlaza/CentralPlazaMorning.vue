@@ -1,6 +1,12 @@
 <template>
   <main id="centralPlazaMorning">
-    <TimerLabel :end-time="endTime.toISOString()" />
+    <div class="col-wrap">
+      <TimerLabel :end-time="endTime.toISOString()" />
+      <div class="hori-wrap">
+        <ChatArea />
+        <RoomList />
+      </div>
+    </div>
   </main>
 </template>
 
@@ -18,5 +24,21 @@ const endTime = dayjs().add(10, 'minute')
   width: 100%;
   height: 100%;
   padding: 5%;
+
+  .col-wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hori-wrap {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
 }
 </style>

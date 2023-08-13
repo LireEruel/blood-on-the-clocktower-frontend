@@ -18,18 +18,21 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { userStore } from '@/stores/user'
+import { useRouter } from 'vue-router'
 const { name, setName } = userStore()
 const inputName = ref<string>(name)
 const currentParticipants = ref<number>(12)
 const maxParticipants = ref<number>(25)
 const isWaitingToJoin = ref<boolean>(false)
+const router = useRouter()
 
 const onClickedPlayBtn = async () => {
   setName(inputName.value)
   isWaitingToJoin.value = true
   await setTimeout(function () {
     isWaitingToJoin.value = false
-  }, 3000)
+    router.push('/central-plaza-morning')
+  }, 1500)
 }
 </script>
 

@@ -63,11 +63,11 @@ yarn dev
         |-- CentralPlaza
             |-- CentralPlazaMorning.vue // 중앙 광장 - 낮
         |-- LandingView.vue
-    |-- App.vue // 최상위 컴포넌트 ★바꿀 일 있으면 PR시 App.vue 수정했음을 반드시 적어주세요
-    |-- main.ts // 앱의 전역적인 설정을 합니다. ★바꿀 일 있으면 PR시 App.vue 수정했음을 반드시 적어주세요
+    |-- App.vue // 최상위 컴포넌트 ★바꿀 일 있으면 PR시 수정했음을 반드시 적어주세요
+    |-- main.ts // 앱의 전역적인 설정을 합니다. ★바꿀 일 있으면 PR시 수정했음을 반드시 적어주세요
     |-- shims-vue.d.ts // .vue 파일에 대한 TS 설정입니다. 수정하지 마세요!
 |-- eslintrc.json // 코딩스타일을 일관적으로 유지하기 위한 설정
-|-- index.html // 기본 html 파일입니다. ★바꿀 일 있으면 PR시 App.vue 수정했음을 반드시 적어주세요
+|-- index.html // 기본 html 파일입니다. ★바꿀 일 있으면 PR시 수정했음을 반드시 적어주세요
 |-- vite.config.ts // 빌드 도구인 vite 설정입니다. ★바꿀 일 있으면 PR시 App.vue 수정했음을 반드시 적어주세요
 |-- yarn.lock // 패키지 관리 도구인 yarn 설정 파일입니다. 자동 생성 되는 거니 임의로 수정하지 마세요.
 

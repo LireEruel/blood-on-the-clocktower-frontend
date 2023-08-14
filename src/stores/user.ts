@@ -5,9 +5,9 @@ export const userStore = defineStore('user', {
     name: localStorage.getItem('name') || ''
   }),
   actions: {
-    setName(newInfo) {
-      this.name = newInfo
-      localStorage.setItem('name', newInfo)
+    setName(newName:string) {
+      this.name = newName
+      localStorage.setItem('name', newName)
     }
   }
 })

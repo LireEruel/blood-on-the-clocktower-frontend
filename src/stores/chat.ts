@@ -1,4 +1,4 @@
-import { Chat } from '@/types/chat'
+import { type Chat } from '@/types/chat'
 import { defineStore } from 'pinia'
 
 export const chatStore = defineStore('chat', {

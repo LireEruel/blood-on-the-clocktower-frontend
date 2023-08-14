@@ -19,7 +19,7 @@
 <script lang="ts" setup>
 import { chatStore } from '@/stores/chat'
 import { userStore } from '@/stores/user'
-import { Chat } from '@/types/chat'
+import { type Chat } from '@/types/chat'
 import { onMounted } from 'vue'
 import { watch } from 'vue'
 import { ref } from 'vue'

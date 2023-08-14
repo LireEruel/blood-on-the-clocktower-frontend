@@ -20,7 +20,7 @@
 import { chatStore } from '@/stores/chat'
 import { userStore } from '@/stores/user'
 import { type Chat } from '@/types/chat'
-import { onMounted } from 'vue'
+import { onMounted, nextTick } from 'vue'
 import { watch } from 'vue'
 import { ref } from 'vue'
 const { chatList, addChat } = chatStore()
@@ -198,14 +198,28 @@ const dummyData: Chat[] = [
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 const inputText = ref('')
+let $chatList: Element
+onMounted(() => {
+  $chatList = document.getElementsByClassName('chat-list')[0]
+})
+
+const scrollToBottom = ()=> {
+  $chatList.scrollTop = $chatList.scrollHeight+ 300;
+}
 dummyData.reduce((promise, chat) => {
   return promise
-    .then(() => delay(0))
+    .then(() => delay(100))
     .then(() => {
       addChat(chat)
     })
 }, Promise.resolve())
 
+watch(chatList, async() => {
+  await nextTick();
+  if($chatList.scrollTop + $chatList.clientHeight >= $chatList.scrollHeight - 300){
+    scrollToBottom();
+  }
+})
 const onEnteredChat = () => {
   const newChat: Chat = {
     id: chatList.length,
@@ -214,11 +228,9 @@ const onEnteredChat = () => {
   }
   addChat(newChat)
   inputText.value = ''
+  scrollToBottom();
 }
-let $chatList: Element
-onMounted(() => {
-  $chatList = document.getElementsByClassName('chat-list')[0]
-})
+
 </script>
 
 <style lang="scss" scoped>

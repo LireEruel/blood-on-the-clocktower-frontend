@@ -1,0 +1,38 @@
+@import '@/assets/styles/colors.scss';
+
+.icon-button {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.icon-button:after {
+  top: -7px;
+  left: -7px;
+  padding: 7px;
+  box-shadow: 0 0 0 4px $white;
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
+  transform: scale(0.8);
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  content: ' ';
+  box-sizing: content-box;
+  position: absolute;
+  border-radius: 50%;
+}
+.icon-button:hover {
+  background: $white;
+}
+.icon-button:hover:after {
+  transform: scale(0.9);
+  opacity: 1;
+}

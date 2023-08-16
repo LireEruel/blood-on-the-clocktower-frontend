@@ -1,5 +1,5 @@
 @import './base.css';
-@import './colors.scss';
+@import '@/assets/styles/colors.scss';
 html,
 body {
   padding: 0;

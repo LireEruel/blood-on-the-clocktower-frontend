@@ -1,5 +1,11 @@
 export interface Chat {
-  id: number
+  chatId: number
   senderName: string
   text: string
+}
+
+export interface ChatRoomInfo {
+  chatRoomId: number
+  chatRoomName: string
+  backgroundImageUrl: string
 }

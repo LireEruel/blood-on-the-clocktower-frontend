@@ -9,7 +9,6 @@ declare module 'vue' {
   export interface GlobalComponents {
     AButton: typeof import('ant-design-vue/es')['Button']
     AInput: typeof import('ant-design-vue/es')['Input']
-    AInputGroup: typeof import('ant-design-vue/es')['InputGroup']
     ChatArea: typeof import('./src/components/ChatArea.vue')['default']
     DefaultHeader: typeof import('./src/components/layouts/DefaultHeader.vue')['default']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']

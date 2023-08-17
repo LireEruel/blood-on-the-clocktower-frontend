@@ -27,7 +27,7 @@ const endTime = dayjs().add(10, 'minute')
 
   .col-wrap {
     width: 100%;
-    height: 100%;
+    height: 50rem;
     display: flex;
     flex-direction: column;
     justify-content: center;

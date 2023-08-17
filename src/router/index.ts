@@ -18,7 +18,7 @@ const router = createRouter({
       name: 'centralPlazaMorning',
       components: {
         header: DefaultHeader,
-        body: CentralPlazaMorning
+        body: CentralPlazaMorning,
       }
     }
   ]

@@ -222,13 +222,13 @@ onMounted(() => {
 const scrollToBottom = () => {
   $chatList.scrollTop = $chatList.scrollHeight + 300
 }
-dummyData.reduce((promise, chat) => {
-  return promise
-    .then(() => delay(100))
-    .then(() => {
-      addChat(chat)
-    })
-}, Promise.resolve())
+// dummyData.reduce((promise, chat) => {
+//   return promise
+//     .then(() => delay(100))
+//     .then(() => {
+//       addChat(chat)
+//     })
+// }, Promise.resolve())
 
 watch(chatList, async () => {
   await nextTick()

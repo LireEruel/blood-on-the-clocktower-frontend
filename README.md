@@ -29,6 +29,11 @@ yarn dev
 
 - 실행 후 잠시 기다리면 실행이 됩니다.
 
+## 브랜치 네이밍 규칙
+
+feature/name/기능 이름
+ex) feature/name/mainLayout
+
 ## 프로젝트 구조
 
 [bulletproof-vue](https://github.com/hirotaka/bulletproof-vue) 를 참고하여 프로젝트 구조를 잡았습니다. api도 설정은 넣어 놨지만, socket만 사용할 경우 추구 학제할 예정입니다.
@@ -72,3 +77,5 @@ yarn dev
 |-- yarn.lock // 패키지 관리 도구인 yarn 설정 파일입니다. 자동 생성 되는 거니 임의로 수정하지 마세요.
 
 ```
+
+
